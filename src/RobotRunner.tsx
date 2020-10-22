@@ -1,4 +1,5 @@
 import { ParsedCommand } from './ParsedCommand';
+import { CommandParser } from './CommandParser';
 import { CommandProcessor } from './CommandProcessor';
 import { Playboard } from './Playboard';
 import { Robot } from './Robot';
@@ -8,11 +9,11 @@ import { CommandEnum } from './CommandEnum';
 export class RobotRunner {
   playboard: Playboard;
   robot: Robot;
-  parsedCommand: ParsedCommand;
+  parsedCommand: ParsedCommand | undefined;
+
   constructor(sizeX: number, sizeY: number) {
     this.playboard = new Playboard(sizeX, sizeY);
     this.robot = new Robot();
-    this.parsedCommand = new ParsedCommand();
   }
   run = (inputMultiLine: string) => {
     console.log('Running for ' + inputMultiLine);
@@ -22,20 +23,19 @@ export class RobotRunner {
       return result;
     });
     return history
-      .filter((element) => element.isToBeDisplayed)
+      .filter((element) => element?.isToBeDisplayed)
       .map((element) => element?.position?.toString())
       .join('\n');
   };
 
-  processInputLine(inputLine: string): RunnerResult {
+  processInputLine(inputLine: string): RunnerResult | undefined {
     let result = new RunnerResult();
     // parse the command
     try {
-      this.parsedCommand.parse(inputLine);
-      result.isToBeDisplayed =
-        this.parsedCommand.command === CommandEnum.REPORT;
+      this.parsedCommand = CommandParser.parse(inputLine);
     } catch (e) {
       console.log('Parsing ' + e);
+      return;
     }
     try {
       this.robot.position = CommandProcessor.processCommand(
@@ -43,6 +43,9 @@ export class RobotRunner {
         this.parsedCommand,
         this.playboard
       );
+      result.isToBeDisplayed =
+        this.parsedCommand.command === CommandEnum.REPORT;
+
       console.log('New robot position is ', this.robot.position);
     } catch (e) {
       console.log('Processing ' + e);

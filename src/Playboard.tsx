@@ -3,7 +3,8 @@ import { Vector } from './Vector';
 export class Playboard {
   sizeX: number;
   sizeY: number;
-  public isValidPosition(position: Vector): boolean {
+  public isValidPosition(position: Vector | undefined): boolean {
+    if (position === undefined) return false;
     return (
       position.point.x >= 0 &&
       position.point.x < this.sizeX &&
