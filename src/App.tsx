@@ -1,18 +1,23 @@
 import React, { MouseEvent, useState } from 'react';
-import { RobotRunner } from './runner';
+import { RobotRunner } from './RobotRunner';
 import './styles.css';
 
 export default function App() {
-  const [inputData, setInputData] = useState('');
-  const [outputData, setOutputData] = useState('');
+  const [inputData, setInputData] = useState<string>('PLACE 6,8,North');
+  const [outputData, setOutputData] = useState<string>('');
   const run = (event: MouseEvent) => {
-    const runner = new RobotRunner();
+    const runner = new RobotRunner(5, 5);
     setOutputData(runner.run(inputData));
   };
   const reset = (event: MouseEvent) => {
     setInputData('');
     setOutputData('');
     console.log('Reset... Done.');
+  };
+
+  const addCommandLine = (command: string) => {
+    const newState = inputData + (inputData.length > 0 ? '\n' : '') + command;
+    setInputData(newState);
   };
   return (
     <div className="App">
@@ -41,10 +46,13 @@ export default function App() {
             </td>
           </tr>
           <tr>
-            <td>
+            <td colSpan={2}>
+              <button onClick={() => addCommandLine('PLACE')}>PLACE</button>
+              <button onClick={() => addCommandLine('MOVE')}>MOVE</button>
+              <button onClick={() => addCommandLine('RIGHT')}>RIGHT</button>
+              <button onClick={() => addCommandLine('LEFT')}>LEFT</button>
+              <button onClick={() => addCommandLine('REPORT')}>REPORT</button>
               <button onClick={run}>Run</button>
-            </td>
-            <td>
               <button onClick={reset}>Reset</button>
             </td>
           </tr>
