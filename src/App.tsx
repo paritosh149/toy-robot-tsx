@@ -4,7 +4,7 @@ import DropZone from './DropZone';
 import './styles.css';
 
 export default function App() {
-  const [inputData, setInputData] = useState<string>('PLACE 6,8,North');
+  const [inputData, setInputData] = useState<string>('');
   const [outputData, setOutputData] = useState<string>('');
   const run = (event: MouseEvent) => {
     const runner = new RobotRunner(5, 5);
