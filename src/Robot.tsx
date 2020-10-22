@@ -1,5 +1,5 @@
 import { Vector } from './Vector';
 
 export class Robot {
-  position: Vector;
+  position: Vector | undefined;
 }

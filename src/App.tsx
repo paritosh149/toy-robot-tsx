@@ -49,8 +49,8 @@ export default function App() {
             <td colSpan={2}>
               <button onClick={() => addCommandLine('PLACE')}>PLACE</button>
               <button onClick={() => addCommandLine('MOVE')}>MOVE</button>
-              <button onClick={() => addCommandLine('RIGHT')}>RIGHT</button>
               <button onClick={() => addCommandLine('LEFT')}>LEFT</button>
+              <button onClick={() => addCommandLine('RIGHT')}>RIGHT</button>
               <button onClick={() => addCommandLine('REPORT')}>REPORT</button>
               <button onClick={run}>Run</button>
               <button onClick={reset}>Reset</button>

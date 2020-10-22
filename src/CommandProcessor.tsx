@@ -3,12 +3,13 @@ import { ParsedCommand } from './ParsedCommand';
 import { Vector } from './Vector';
 import { Playboard } from './Playboard';
 import { DirectionEnum } from './DirectionEnum';
+
 export class CommandProcessor {
   static processCommand(
-    currentPosition: Vector,
+    currentPosition: Vector | undefined,
     command: ParsedCommand,
     playboard: Playboard
-  ): Vector {
+  ): Vector | undefined {
     console.log('Processing: ', currentPosition, command, playboard);
     switch (command.command) {
       case CommandEnum.PLACE:
@@ -46,34 +47,32 @@ export class CommandProcessor {
     }
   }
 
-  static move(currentPosition: Vector) {
-    if (currentPosition.f === DirectionEnum.NORTH) {
-      return new Vector(
-        currentPosition.point.x,
-        currentPosition.point.y + 1,
-        currentPosition.f
-      );
-    }
-    if (currentPosition.f === DirectionEnum.SOUTH) {
-      return new Vector(
-        currentPosition.point.x,
-        currentPosition.point.y - 1,
-        currentPosition.f
-      );
-    }
-    if (currentPosition.f === DirectionEnum.EAST) {
-      return new Vector(
-        currentPosition.point.x + 1,
-        currentPosition.point.y,
-        currentPosition.f
-      );
-    }
-    if (currentPosition.f === DirectionEnum.WEST) {
-      return new Vector(
-        currentPosition.point.x - 1,
-        currentPosition.point.y,
-        currentPosition.f
-      );
+  static move(currentPosition: Vector): Vector {
+    switch (currentPosition.f) {
+      case DirectionEnum.NORTH:
+        return new Vector(
+          currentPosition.point.x,
+          currentPosition.point.y + 1,
+          currentPosition.f
+        );
+      case DirectionEnum.SOUTH:
+        return new Vector(
+          currentPosition.point.x,
+          currentPosition.point.y - 1,
+          currentPosition.f
+        );
+      case DirectionEnum.EAST:
+        return new Vector(
+          currentPosition.point.x + 1,
+          currentPosition.point.y,
+          currentPosition.f
+        );
+      case DirectionEnum.WEST:
+        return new Vector(
+          currentPosition.point.x - 1,
+          currentPosition.point.y,
+          currentPosition.f
+        );
     }
   }
 
