@@ -6,7 +6,7 @@
 - size 5 would result in board positions 0 to 4
 
 * [x] Add runner
-* [ ] Allow file upload
+* [x] Allow file Drag n Drop
 * [ ] Add Test cases
 * [ ] Add Redux
 * [ ] customize separator
