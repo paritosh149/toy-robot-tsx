@@ -7,6 +7,7 @@
 
 * [x] Add runner
 * [x] Allow file Drag n Drop
+* [x] Test Data file added
 * [ ] Add Test cases
 * [ ] Add Redux
 * [ ] customize separator
@@ -17,3 +18,4 @@
 * [ ] Keep flow as functional as possible
 * [ ] Folder re-structure
 * [ ] Responsive UI
+* [ ] Add BOARD command

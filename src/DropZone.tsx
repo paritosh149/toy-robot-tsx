@@ -1,5 +1,13 @@
-import * as React from 'react';
-import { IDropZoneProps } from './IDropZoneProps';
+import * as React from "react";
+import { IDropZoneProps } from "./IDropZoneProps";
+
+export function FileToText(file: File, onFileReadComplete: Function): void {
+  const filereader = new FileReader();
+  filereader.onload = function () {
+    onFileReadComplete(filereader.result as string);
+  };
+  filereader.readAsText(file);
+}
 
 export default function DropZone(props: IDropZoneProps) {
   const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
@@ -19,25 +27,22 @@ export default function DropZone(props: IDropZoneProps) {
     e.stopPropagation();
     const files = e.dataTransfer.files;
     if (files.length === 1) {
-      const filereader = new FileReader();
-      filereader.onload = function () {
-        props.onFileReadComplete(filereader.result as string);
-      };
-      filereader.readAsText(files[0]);
+      FileToText(files[0], props.onFileReadComplete);
     }
   };
   // onFileReadComplete
   return (
-    <table style={{ width: '100%' }}>
+    <table style={{ width: "100%" }}>
       <tbody>
-        <tr style={{ height: '100px' }}>
-          <td colSpan={2} style={{ border: '1px solid black' }}>
+        <tr style={{ height: "100px" }}>
+          <td colSpan={2} style={{ border: "1px solid black" }}>
             <div
               onDrop={(e) => handleDrop(e)}
               onDragOver={(e) => handleDragOver(e)}
               onDragEnter={(e) => handleDragEnter(e)}
-              onDragLeave={(e) => handleDragLeave(e)}>
-              Drop your command files here
+              onDragLeave={(e) => handleDragLeave(e)}
+            >
+              Drop your command file here
             </div>
           </td>
         </tr>

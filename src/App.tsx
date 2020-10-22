@@ -1,6 +1,8 @@
 import React, { MouseEvent, useState } from "react";
 import { RobotRunner } from "./RobotRunner";
 import DropZone from "./DropZone";
+import fileData from "../RobotFile.txt";
+
 import "./styles.css";
 
 export default function App() {
@@ -23,6 +25,10 @@ export default function App() {
 
   const fillCommands = (content: string) => {
     setInputData(content);
+  };
+
+  const loadTestData = (e: React.MouseEvent) => {
+    fillCommands(fileData);
   };
   return (
     <div className="App">
@@ -90,6 +96,7 @@ export default function App() {
               <button onClick={() => addCommandLine("REPORT")}>REPORT</button>
               <button onClick={run}>Run</button>
               <button onClick={reset}>Reset</button>
+              <button onClick={loadTestData}>Load</button>
             </td>
           </tr>
         </tbody>
