@@ -17,11 +17,14 @@ export class RobotRunner {
   }
   run = (inputMultiLine: string) => {
     console.log('Running for ' + inputMultiLine);
-    const history = inputMultiLine.split('\n').map((inputLine) => {
-      console.log('Current Line: ' + inputLine);
-      const result = this.processInputLine(inputLine);
-      return result;
-    });
+    const history = inputMultiLine
+      .split('\n')
+      .filter((inputLine) => inputLine.length)
+      .map((inputLine) => {
+        console.log('Current Line: ' + inputLine);
+        const result = this.processInputLine(inputLine);
+        return result;
+      });
     return history
       .filter((element) => element?.isToBeDisplayed)
       .map((element) => element?.position?.toString())

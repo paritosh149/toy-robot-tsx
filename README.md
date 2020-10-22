@@ -6,6 +6,9 @@
 - size 5 would result in board positions 0 to 4
 
 * [x] Add runner
+* [ ] Allow file upload
+* [ ] Add Test cases
+* [ ] Add Redux
 * [ ] customize separator
 * [x] initialize playboard
 * [x] Validate initial placement
@@ -13,3 +16,4 @@
 * [x] PLACE must be first command
 * [ ] Keep flow as functional as possible
 * [ ] Folder re-structure
+* [ ] Responsive UI
