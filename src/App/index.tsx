@@ -1,7 +1,7 @@
 import React, { MouseEvent, useState } from 'react';
-import { RobotRunner } from './RobotRunner';
-import DropZone from './DropZone';
-import fileData from '../RobotFile.txt';
+import { RobotRunner } from '../Components/common/RobotRunner';
+import DropZone from '../Components/DropZone';
+import fileData from '../../RobotFile.txt';
 
 import './styles.css';
 
