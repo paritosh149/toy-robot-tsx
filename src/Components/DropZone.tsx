@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDropZoneProps } from './IDropZoneProps';
+import { IDropZoneProps } from '../Types/IDropZoneProps';
 
 export function FileToText(file: File, onFileReadComplete: Function): void {
   const filereader = new FileReader();

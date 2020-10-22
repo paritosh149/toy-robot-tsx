@@ -1,7 +1,7 @@
-import { CommandEnum } from './CommandEnum';
-import { DirectionEnum } from './DirectionEnum';
-import { Vector } from './Vector';
-import { ParsedCommand } from './ParsedCommand';
+import { CommandEnum } from '../../Types/CommandEnum';
+import { DirectionEnum } from '../../Types/DirectionEnum';
+import { Vector } from '../../Types/Vector';
+import { ParsedCommand } from '../../Types/ParsedCommand';
 
 export class CommandParser {
   static parse(inputLine: string): ParsedCommand {

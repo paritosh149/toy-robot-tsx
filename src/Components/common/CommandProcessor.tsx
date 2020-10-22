@@ -1,8 +1,8 @@
-import { CommandEnum } from './CommandEnum';
-import { ParsedCommand } from './ParsedCommand';
-import { Vector } from './Vector';
-import { Playboard } from './Playboard';
-import { DirectionEnum } from './DirectionEnum';
+import { CommandEnum } from '../../Types/CommandEnum';
+import { ParsedCommand } from '../../Types/ParsedCommand';
+import { Vector } from '../../Types/Vector';
+import { Playboard } from '../../Types/Playboard';
+import { DirectionEnum } from '../../Types/DirectionEnum';
 
 export class CommandProcessor {
   static processCommand(

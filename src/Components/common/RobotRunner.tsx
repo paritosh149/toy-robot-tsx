@@ -1,10 +1,10 @@
-import { ParsedCommand } from './ParsedCommand';
+import { ParsedCommand } from '../../Types/ParsedCommand';
 import { CommandParser } from './CommandParser';
 import { CommandProcessor } from './CommandProcessor';
-import { Playboard } from './Playboard';
-import { Robot } from './Robot';
-import { RunnerResult } from './RunnerResult';
-import { CommandEnum } from './CommandEnum';
+import { Playboard } from '../../Types/Playboard';
+import { Robot } from '../../Types/Robot';
+import { RunnerResult } from '../../Types/RunnerResult';
+import { CommandEnum } from '../../Types/CommandEnum';
 
 export class RobotRunner {
   playboard: Playboard;
