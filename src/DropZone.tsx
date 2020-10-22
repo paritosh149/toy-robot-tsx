@@ -1,5 +1,5 @@
-import * as React from "react";
-import { IDropZoneProps } from "./IDropZoneProps";
+import * as React from 'react';
+import { IDropZoneProps } from './IDropZoneProps';
 
 export function FileToText(file: File, onFileReadComplete: Function): void {
   const filereader = new FileReader();
@@ -32,18 +32,15 @@ export default function DropZone(props: IDropZoneProps) {
   };
   // onFileReadComplete
   return (
-    <table style={{ width: "100%" }}>
-      <tbody>
-        <tr style={{ height: "100px" }}>
-          <td colSpan={2} style={{ border: "1px solid black" }}>
-            <div
-              onDrop={(e) => handleDrop(e)}
-              onDragOver={(e) => handleDragOver(e)}
-              onDragEnter={(e) => handleDragEnter(e)}
-              onDragLeave={(e) => handleDragLeave(e)}
-            >
-              Drop your command file here
-            </div>
+    <table style={{ width: '500px', marginLeft: 'auto', marginRight: 'auto' }}>
+      <tbody
+        onDrop={(e) => handleDrop(e)}
+        onDragOver={(e) => handleDragOver(e)}
+        onDragEnter={(e) => handleDragEnter(e)}
+        onDragLeave={(e) => handleDragLeave(e)}>
+        <tr style={{ height: '100px' }}>
+          <td colSpan={2} style={{ border: '1px solid black' }}>
+            <div>Drop your command file here</div>
           </td>
         </tr>
       </tbody>

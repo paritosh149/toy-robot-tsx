@@ -1,25 +1,25 @@
-import React, { MouseEvent, useState } from "react";
-import { RobotRunner } from "./RobotRunner";
-import DropZone from "./DropZone";
-import fileData from "../RobotFile.txt";
+import React, { MouseEvent, useState } from 'react';
+import { RobotRunner } from './RobotRunner';
+import DropZone from './DropZone';
+import fileData from '../RobotFile.txt';
 
-import "./styles.css";
+import './styles.css';
 
 export default function App() {
-  const [inputData, setInputData] = useState<string>("");
-  const [outputData, setOutputData] = useState<string>("");
+  const [inputData, setInputData] = useState<string>('');
+  const [outputData, setOutputData] = useState<string>('');
   const [sizeData, setSizeData] = useState({ x: 5, y: 5 });
   const run = (event: MouseEvent) => {
     const runner = new RobotRunner(sizeData.x, sizeData.y);
     setOutputData(runner.run(inputData));
   };
   const reset = (event: MouseEvent) => {
-    setInputData("");
-    setOutputData("");
+    setInputData('');
+    setOutputData('');
   };
 
   const addCommandLine = (command: string) => {
-    const newState = inputData + (inputData.length > 0 ? "\n" : "") + command;
+    const newState = inputData + (inputData.length > 0 ? '\n' : '') + command;
     setInputData(newState);
   };
 
@@ -34,7 +34,7 @@ export default function App() {
     <div className="App">
       <h1>Hello Robot players</h1>
       <h2>Place your robot and click Run to start</h2>
-      <table>
+      <table style={{ marginLeft: 'auto', marginRight: 'auto' }}>
         <thead>
           <tr>
             <td>Input</td>
@@ -63,11 +63,11 @@ export default function App() {
                   onChange={(e) => {
                     setSizeData((state) => ({
                       ...state,
-                      x: Number(e.target.value)
+                      x: Number(e.target.value),
                     }));
                   }}
                   value={sizeData.x}
-                  style={{ width: "20px" }}
+                  style={{ width: '20px' }}
                 />
               </div>
               <div>
@@ -76,24 +76,24 @@ export default function App() {
                   onChange={(e) => {
                     setSizeData((state) => ({
                       ...state,
-                      y: Number(e.target.value)
+                      y: Number(e.target.value),
                     }));
                   }}
                   value={sizeData.y}
-                  style={{ width: "20px" }}
+                  style={{ width: '20px' }}
                 />
               </div>
             </td>
           </tr>
           <tr>
             <td colSpan={2}>
-              <button onClick={() => addCommandLine("PLACE 0,0,NORTH")}>
+              <button onClick={() => addCommandLine('PLACE 0,0,NORTH')}>
                 PLACE
               </button>
-              <button onClick={() => addCommandLine("MOVE")}>MOVE</button>
-              <button onClick={() => addCommandLine("LEFT")}>LEFT</button>
-              <button onClick={() => addCommandLine("RIGHT")}>RIGHT</button>
-              <button onClick={() => addCommandLine("REPORT")}>REPORT</button>
+              <button onClick={() => addCommandLine('MOVE')}>MOVE</button>
+              <button onClick={() => addCommandLine('LEFT')}>LEFT</button>
+              <button onClick={() => addCommandLine('RIGHT')}>RIGHT</button>
+              <button onClick={() => addCommandLine('REPORT')}>REPORT</button>
               <button onClick={run}>Run</button>
               <button onClick={reset}>Reset</button>
               <button onClick={loadTestData}>Load</button>
