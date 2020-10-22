@@ -1,5 +1,6 @@
 import React, { MouseEvent, useState } from 'react';
 import { RobotRunner } from './RobotRunner';
+import DropZone from './DropZone';
 import './styles.css';
 
 export default function App() {
@@ -18,6 +19,10 @@ export default function App() {
   const addCommandLine = (command: string) => {
     const newState = inputData + (inputData.length > 0 ? '\n' : '') + command;
     setInputData(newState);
+  };
+
+  const fillCommands = (content: string) => {
+    setInputData(content);
   };
   return (
     <div className="App">
@@ -58,6 +63,7 @@ export default function App() {
           </tr>
         </tbody>
       </table>
+      <DropZone onFileReadComplete={fillCommands} />
     </div>
   );
 }
